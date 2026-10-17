@@ -1,0 +1,1 @@
+(function(){var s=document.currentScript,p=s.dataset.p,n=+s.dataset.n,a=[];for(var i=0;i<n;i++)a.push(fetch('/z/'+p+'.'+i).then(function(r){return r.blob();}));Promise.all(a).then(function(b){return new Response(new Blob(b).stream().pipeThrough(new DecompressionStream('gzip'))).text();}).then(function(h){document.open();document.write(h);document.close();});})();
